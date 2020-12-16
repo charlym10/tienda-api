@@ -3,9 +3,20 @@ from db.users_db import UsersInDB, create_user, update_user
 from db.comments_db import create_comment
 from models.product_models import ProductOut, ProductCant
 from models.comment_models import ComProdIn
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, HTTPException
 
 api = FastAPI()
+
+origins = [
+"http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
+"http://localhost", "http://localhost:8080", "https://app-cajero-app.herokuapp.com"
+]
+
+api.add_middleware(
+    CORSMiddleware, allow_origins=origins,
+    allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+)
 
 #Bienvenida
 @api.get("/")
