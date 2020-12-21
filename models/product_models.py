@@ -1,15 +1,24 @@
 from pydantic import BaseModel
-from typing import Dict
-from db.products_db import database_products
 
 class ProductOut(BaseModel):
-    Nombre: str
-    Categoría: str
-    Precio: int
-    Unidad: str
-    Proveedor: str
-    Disponibilidad: int
+    id: int
+    nombre: str
+    categoria: str
+    precio: int
+    unidad: str
+    proveedor: str
+    disponibilidad: int
+    url: str
+
+class ProductIn(BaseModel):
+    nombre: str
+    categoria: str
+    precio: int
+    unidad: str
+    proveedor: str
+    disponibilidad: int
+    url: str
 
 class ProductCant(BaseModel):
-    Nombre: str
-    Disponibilidad: int
+    nombre: str
+    disponibilidad: int
